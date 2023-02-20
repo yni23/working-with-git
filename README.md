@@ -21,7 +21,7 @@ First clone the repository to your local machine.
 git clone git@github.com:username/reponame.git
 ```
 
-where `username` is your GitHub user name, e.g., `mhscott`, and `reponame` is the name of the repository, e.g., `bennyframe-1.0`.
+where `username` is your GitHub user name, e.g., `mhscott`, and `reponame` is the name of the repository, e.g., `bestrepoever`.
 
 The `clone` command will copy the current contents of the repository to your local machine.
 
