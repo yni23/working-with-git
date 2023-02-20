@@ -200,16 +200,14 @@ Fast forward... you've committed changes from your local repo to your fork and y
 
 To this end, push a branch from your fork to the upstream repo and make a "pull request".
 
-Change to the branch you'd like to push upstream, then map your branch to the upstream origin.
+Change to the branch you'd like to push upstream, then map your branch to your origin repo on GitHub.com.
 
 ```bash
 git checkout new-feature
 git push --set-upstream origin new-feature
 ```
 
-Note: I don't totally understand the `--set-upstream` option, but let's roll with it.
-
-Also note: You only have to do the `--set-upstream` once per branch. After that, any pushes to the mapped branch will go straight upstream.
+Note: You only have to do the `--set-upstream` once per branch. After that, any pushes to the mapped branch will go straight to your origin repo on GitHub.com.
 
 Now go to your GitHub repo at `github.com/yourusername/reponame`.
 
