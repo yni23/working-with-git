@@ -57,7 +57,7 @@ const char* Zarak(void) {
 
 int main (int argc, const char **argv)
 {
-  cout << "Hello World" << endl << endl;
+  cout << "Roll Call!" << endl << endl;
 
   cout << "Akiri: " << Akiri() << endl;
   cout << "Barb: " << Barb() << endl;
