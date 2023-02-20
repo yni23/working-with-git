@@ -7,11 +7,9 @@ Basic commands for managing repositories with `git` and [GitHub](https://github.
 1. Create an account on GitHub (skip this step if you already have an account)
 2. Configure your GitHub account to use an SSH key - [Instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 1. Make sure your local machine has `git` installed - [Instructions](https://github.com/git-guides/install-git)
-2. Install a GitHub client on your local machine
+2. GUIs are available for using `git` locally, but we will stick with command line clients
     + Windows - Git bash
     + Linux/Mac - terminal window
-    
-    UI-based tools are available for using `git` locally, but we will stick with command line clients
 
 # Working with Repositories You Own
 
@@ -135,6 +133,84 @@ You should now see your changes/added files listed at `github.com/username/repon
 
 # Working with Forks of Repositories You Do Not Own
 
-Frequently, you want to contribute code back to an existing repository owned by another user or organization, e.g., `github.com/OpenSees/OpenSees`.
+Frequently, you want to contribute code back to an public repository owned by another user or organization, e.g., `github.com/OpenSees/OpenSees`.
 
 In this case, a couple extra steps are necessary, after which the commands described above will suit your workflows.
+
+## Create a Fork
+
+To work with a repository that you do not own, the best approach is to fork the repository into your GitHub account.
+
+1. Go to the repository `github.com/username/reponame` and create a fork.
+2. Go to *your* forked repository `github.com/yourusername/reponame`.
+3. Clone your fork to your local machine (same process shown above).
+
+```bash
+git clone git@github.com:yourusername/reponame.git
+```
+
+You can now work with the forked repo as if it is your own.
+
+## Get Upstream Updates
+
+You should keep your fork up to date with the "upstream" repo. This will allow you to get the latest changes made by the owners as well as by other contributors.
+
+```bash
+git remote add upstream git@github.com:username/reponame.git
+git fetch upstream
+git pull upstream main
+```
+
+You only have to do `git remote add` and `git fetch` once. After the first time, `git pull upstream main` is all you have to do to get the latest upstream code.
+
+Make upstream updates a regular habit for your forks of active repositories, e.g., if you fork OpenSees, do upstream updates once a week.
+
+To check the addresses of your remote repositories
+
+```bash
+git remote -v
+```
+
+You should see two remotes: `origin` and `upstream`.
+
+In some cases, you will work with several upstream repositories, e.g., `upstream-1`, `upstream-2`, or better names.
+
+To change the URL of remote addresses, e.g., if the owner of the upstream repo changes the repo name
+
+```bash
+git remote set-url upstream git@github.com:username/newreponame.git
+```
+
+## Merge Upstream Updates with Your Branches
+
+Typically, one does the `git pull upstream main` while their local `main` is the current branch.
+
+To merge the upstream changes into a local branch, e.g., `new-feature`
+
+```bash
+git checkout new-feature
+git merge main
+```
+
+Do this merge for every local branch under active development.
+
+## Pushing Your Modifications to Upstream
+
+Fast forward... you've committed changes from your local repo to your fork and you're ready to share your contributions with the world.
+
+To this end, push a branch from your fork to the upstream repo and make a "pull request".
+
+Change to the branch you'd like to push upstream, then map your branch to the upstream origin.
+
+```bash
+git checkout new-feature
+git push --set-upstream origin new-feature
+```
+
+Note: I don't totally understand the `--set-upstream` option, but let's roll with it.
+
+Also note: You only have to do the `--set-upstream` once per branch. After that, any pushes to the mapped branch will go straight upstream.
+
+Now go to your GitHub repo at `github.com/yourusername/reponame`.
+
+Click on `Contribute`, then `Open pull request`.
