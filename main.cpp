@@ -27,7 +27,7 @@ const char* Jacob(void) {
 }
 
 const char* Michael(void) {
-  return "/*Type something here*/";
+  return "Hello, C++ is amazing!";
 }
 
 const char* Minjie(void) {
