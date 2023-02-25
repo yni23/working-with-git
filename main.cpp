@@ -43,7 +43,7 @@ const char* Sebastian(void) {
 }
 
 const char* Yun(void) {
-  return "/*Type something here*/";
+  return "/*Hello World*/";
 }
 
 const char* Zahra(void) {
